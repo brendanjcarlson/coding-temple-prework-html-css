@@ -1,0 +1,29 @@
+@use '../abstracts' as *
+
+:root
+    @each $color, $h, $s, $l in $colors
+        @for $i from 1 through 9
+            --clr-#{$color}-#{$i*100}: hsl(#{$h}, #{$s}, #{$l - ($i*10%)})
+
+    --gradient-accent: linear-gradient(90deg, var(--clr-accent-400), var(--clr-accent-300), var(--clr-primary-300), var(--clr-primary-400))
+    --gradient-primary: linear-gradient(90deg, var(--clr-primary-400), var(--clr-primary-300), var(--clr-accent-400), var(--clr-accent-400))
+
+    --ff-primary: #{$font-family}
+
+    @each $weight, $value in $font-weights
+        --fw-#{$weight}: #{$value}
+
+    @each $breakpoint, $font-size in $font-sizes
+        @if $breakpoint == small
+            @each $size, $value in $font-size
+                --fs-#{$size}: #{$value}
+        @else if $breakpoint == medium
+            @include mq(medium)
+                @each $size, $value in $font-size
+                    --fs-#{$size}: #{$value}
+        @else if $breakpoint == large
+            @include mq(large)
+                @each $size, $value in $font-size
+                    --fs-#{$size}: #{$value}
+
+    --border-radius: #{$border-radius}

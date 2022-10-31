@@ -1,0 +1,178 @@
+@use '../abstracts' as *
+@use '../layouts' as *
+
+body
+    background: var(--clr-neutral-900)
+    color: var(--clr-neutral-100)
+
+header
+    width: 100vw
+    height: rem(40)
+    background: var(--clr-neutral-800)
+    box-shadow: 0 2px 8px rgba(0,0,0,.25)
+    position: fixed
+    top: 0
+    opacity: .9
+    z-index: 9999
+    nav
+        height: 100%
+        ul
+            height: 100%
+            +flex(row, flex-end, center, em(40))
+            margin-inline-end: em(40)
+            li
+                padding: em(4) em(8)
+
+
+main
+    padding: 0 em(16)
+    +mq(medium)
+        padding: 0 0
+        margin-inline: auto
+        width: 85%
+    +mq(large)
+        width: 70%
+        max-width: rem(1200)
+
+section
+    height: 100vh
+    &:not(:first-of-type)
+        scroll-margin-block-start: 7.5vh
+        +mq(medium)
+            scroll-margin-block-start: 12.5vh
+    &:first-of-type
+        margin-block-start: em(160)
+
+
+.hero
+    +flex(column, default, flex-start, rem(24))
+    +mq(large)
+        gap: rem(36)
+    margin-block-start: em(64)
+    h1
+        color: transparent
+        background-image: var(--gradient-accent)
+        background-clip: text
+        background-size: 400%
+        background-position: left
+        animation: gradient-animation 30s infinite alternate
+    p
+        max-width: rem(400)
+        +mq(medium)
+            max-width: rem(440)
+    a
+        border-radius: var(--border-radius)
+
+
+.about
+    h2
+        padding-block-start: em(2)
+        padding-inline-start: em(4)
+        margin-block-end: em(16)
+    &__content
+        box-shadow: 0 2px 8px rgba(0,0,0,.25)
+        +grid(1fr 1fr)
+        background: var(--clr-neutral-800)
+        border-radius: var(--border-radius)
+        position: relative
+        &__images
+            &__image
+                width: 100%
+                height: 100%
+                object-fit: cover
+                overflow: hidden
+                display: none
+                border-radius: var(--border-radius) 0 0 var(--border-radius)
+                &--active
+                    display: block
+                    
+        &__tabs
+            box-shadow: 0 2px 8px rgba(0,0,0,.25)
+            &__list
+                +flex(row, center, center)
+                &__item
+                    flex: 1 1 100%
+                    background-image: var(--gradient-primary)
+                    background-size: 300%
+                    background-position: 99%
+                    color: var(--clr-neutral-900)
+                    text-align: center
+                    padding-block: em(8)
+                    font-weight: var(--fw-medium)
+                    cursor: pointer
+                    transition: background-position 400ms ease-out, color 300ms ease-out
+                    &:last-of-type
+                        border-radius: 0 var(--border-radius) 0 0
+                    &:hover, &:focus
+                        background-position: 0%
+                        color: var(--clr-neutral-100)
+                    &--active
+                        background-position: 0%
+                        color: var(--clr-neutral-100)
+        &__body
+            &__text
+                display: none
+                padding: em(24) em(32)
+                &--active
+                    display: block
+    a
+        position: absolute
+        margin-block-start: em(18)
+        border-radius: var(--border-radius)
+
+.skills
+    h2
+        margin-block-end: em(16)
+    &__wrapper
+        +grid(1fr 1fr)
+        text-align: center
+    h3
+        margin-block-end: em(12)
+    ul
+        +flex(column, center, center)
+
+.contact
+    h2
+        margin-block-end: em(16)
+    form
+        width: 50%
+        +grid(1fr)
+        label
+            font-weight: var(--fw-medium)
+            margin-block-end: em(4)
+        input, textarea
+            margin-block-end: em(10)
+            padding: em(4) em(10)
+            border: none
+            border-radius: var(--border-radius)
+            background: var(--clr-neutral-100)
+            color: var(--clr-neutral-900)
+            box-shadow: 0 0 2px 1px rgba(255,255,255,.25)
+            &::placeholder
+                color: var(--clr-neutral-600)
+            &:focus
+                outline: none
+                box-shadow: 0 0 0 2px var(--clr-primary-400) inset
+        textarea
+            margin-block-end: em(20)
+        button
+            width: max-content
+            border: none
+            border-radius: var(--border-radius)
+            
+
+/* UTILITY CLASSES */
+.text-neutral-600
+    color: var(--clr-neutral-600)
+
+.text-accent-400
+    color: var(--clr-accent-400)
+
+.text-primary-400
+    color: var(--clr-primary-400)
+
+@keyframes gradient-animation
+    0%
+        background-position: left
+    100%
+        background-position: right

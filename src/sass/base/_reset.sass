@@ -1,0 +1,49 @@
+html
+  font-size: 100%
+  box-sizing: border-box
+
+html,
+html:focus-within
+  scroll-behavior: smooth
+
+*,
+*::before,
+*::after
+  box-sizing: inherit
+  margin: 0
+  padding: 0
+
+body
+  min-height: 100vh
+  text-rendering: optimizeSpeed
+  line-height: 1.6
+  -webkit-font-smoothing: antialiased
+
+ul,
+ol
+  list-style-type: none
+
+a,
+a:visited,
+a:active
+  text-decoration: none
+
+img,
+picture,
+svg,
+video,
+canvas
+  max-width: 100%
+  display: block
+
+@media (prefers-reduced-motion: reduce)
+  html:focus-within
+    scroll-behavior: auto
+
+  *,
+  *::before,
+  *::after
+    animation-duration: 0.01ms !important
+    animation-iteration-count: 1 !important
+    transition-duration: 0.01ms !important
+    scroll-behavior: auto !important

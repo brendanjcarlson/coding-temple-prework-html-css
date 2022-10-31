@@ -1,0 +1,12 @@
+@use 'colors' as *
+
+$border-radius: 8px
+
+@mixin border-gradient($bs, $ie, $be, $is, $fill: solid)
+    width: max-content
+    border-block-start: $bs $fill
+    border-inline-end: $ie $fill
+    border-block-end: $be $fill
+    border-inline-start: $is $fill
+    border-image-source: linear-gradient(90deg, var(--clr-primary-400), var(--clr-primary-300), var(--clr-accent-400), var(--clr-accent-300))
+    border-image-slice: 1
